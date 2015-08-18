@@ -1,0 +1,40 @@
+
+.block {
+	font-family: Graduate;
+}
+.center {
+	margin: 0 auto;
+}
+
+.top {
+	text-align: center;
+}
+.top h1 {
+	font-size: 460%;
+	margin-bottom: 0;
+}
+.top h2 {
+	font-size: 300%;
+	margin-top: 0;
+}
+.top .logos img {
+	max-width: 280px;
+}
+
+.counter table{
+	width: 100%;
+	max-width: 450px;
+}
+.counter .counterNums {
+	font-size: 500%;
+}
+
+.schedule > table{
+	margin: 30px 0;
+}
+.schedule .logo {
+	text-align: center;
+}
+.schedule .logo > img {
+	max-height: 30px;
+}
