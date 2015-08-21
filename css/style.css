@@ -1,4 +1,6 @@
-
+body {
+	font-size: 14px;
+}
 .block {
 	font-family: Graduate;
 }
@@ -17,16 +19,32 @@
 	font-size: 300%;
 	margin-top: 0;
 }
+.top .logos {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+.top .logos td.logoTD {
+	width: 50%;
+	padding: 0 2%;
+}
+.top .logos td > span {
+	font-size: 200%;
+	font-weight: bold;
+}
 .top .logos img {
-	max-width: 280px;
+	width: 100%;
 }
 
 .counter table{
 	width: 100%;
-	max-width: 450px;
+	max-width: 500px;
 }
 .counter .counterNums {
 	font-size: 500%;
+}
+.counter .counterNums td{
+	padding: 0 2%;
 }
 
 .schedule > table{
@@ -37,4 +55,12 @@
 }
 .schedule .logo > img {
 	max-height: 30px;
+}
+@media screen and (max-width: 460px){
+	body {
+		font-size: 12px;
+	}
+	.counter .counterNums {
+		font-size: 350%;
+	}
 }
