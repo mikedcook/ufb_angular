@@ -32,7 +32,7 @@
 			<h1 class="block">{{nextGame.opponent}}</h1>
 			<h2 class="block">{{nextGame.mascot}}</h2>
 			<div class="gameInfo">
-				<h3>{{nextGame.date}} at {{nextGame.time}} MT</h3>
+				<h3>{{nextGame.datetime | date:"MMM d, yyyy 'at' h:mm a"}}</h3>
 				<div>Current Date: {{now | date:'medium'}}</div>
 			</div>
 		</div>
@@ -42,8 +42,7 @@
 					<td class="block">{{gametime().days}}</td>
 					<td class="block">{{gametime().hours}}</td>
 					<td class="block">{{gametime().minutes}}</td>
-					<!-- <td class="block">{{countdown().seconds}}</td> -->
-					<td class="block"><span ng-bind="gametime().seconds"></span></td>
+					<td class="block">{{gametime().seconds}}</td>
 				</tr>
 				<tr>
 					<td>days</td>
@@ -67,10 +66,13 @@
 			</thead>
 			<tbody ng-repeat="game in games">
 				<tr>
-					<td class="logo"><img src="images/{{game.logo}}" /></td>
+					<td class="logo"><img ng-if="game.logo" src="images/{{game.logo}}" /></td>
 					<td>{{game.opponent}} {{game.mascot}}</td>
-					<td>{{game.date}}</td>
-					<td>{{game.time}} MT</td>
+					<td>{{game.datetime | date:'mediumDate'}}</td>
+					<td>
+						<span ng-if="isMidnight(game.datetime)">{{game.datetime | date:'shortTime'}}</span>
+						<span ng-if="isMidnight(game.datetime) == false">TBA</span>
+					</td>
 					<td><span class="result {{game.result}}">{{game.result}}</span> {{game.score}}</td>
 				</tr>
 			</tbody>

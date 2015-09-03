@@ -7,12 +7,21 @@ myApp.controller('CountdownController',['$scope', '$interval', function($scope,$
 	
 	$scope.getNextGame = function(){
 		for(game in $scope.games){
-			var rawDate	=	Date.parse($scope.games[game].date +' '+ $scope.games[game].time);
+			var rawDate	=	Date.parse($scope.games[game].datetime);
 			console.info('rawDate in getNextGame', rawDate);
 			if(rawDate > $scope.now){
-				$scope.games[game].datetime	=	rawDate;
 				return $scope.games[game];
 			}
+		}
+	};
+	
+	$scope.isMidnight = function(gameDate){
+		gameDate = new Date(gameDate);
+		var theTime = (gameDate.getHours());
+		if(theTime) {
+			return true;
+		}else{
+			return false;
 		}
 	};
 	
@@ -21,122 +30,131 @@ myApp.controller('CountdownController',['$scope', '$interval', function($scope,$
 		$scope.games = [
 			{
 				id:1,
-				opponent:"Utah State",
-				mascot:"Aggies",
-				date:"Aug 29, 2013",
-				time:"6:00 pm",
-				logo:"utahstate.jpg",
-				hometeam:"utah",
-				result:"W",
-				score:"30-26"
-			},
-			{
-				id:2,
-				opponent:"Weber State",
-				mascot:"Wildcats",
-				date:"Sept 7, 2013",
-				time:"12:00 pm",
-				logo:"weberstate.jpg",
-				hometeam:"utah",
-				result:"W",
-				score:"70-7"
-			},
-			{
-				id:3,
-				opponent:"Oregon State",
-				mascot:"Beavers",
-				date:"Sept 14, 2013",
-				time:"8:00 pm",
-				logo:"oregonstate.jpg",
-				hometeam:"utah",
-				result:"L",
-				score:"48-51 OT"
-			},
-			{
-				id:4,
-				opponent:"TDS",
-				mascot:"Cougars",
-				date:"Sept 21, 2013",
-				time:"8:15 pm",
-				logo:"byu.jpg",
-				hometeam:"opp",
-				result:"W",
-				score:"20-13"
-			},
-			{
-				id:5,
-				opponent:"UCLA",
-				mascot:"Bruins",
-				date:"Oct 3, 2013",
-				time:"8:00 pm",
-				logo:"ucla.jpg",
-				hometeam:"utah",
-				result:"L",
-				score:"24-27"
-			},
-			{
-				id:6,
-				opponent:"Stanford",
-				mascot:"Cardinal",
-				date:"Oct 12, 2013",
-				time:"4:00 pm",
-				logo:"stanford.jpg",
-				hometeam:"utah",
-				result:"W",
-				score:"27-21"
-			},
-			{
-				id:7,
-				opponent:"Arizona",
-				mascot:"Wildcats",
-				date:"Oct 19, 2013",
-				time:"8:00 pm",
-				logo:"arizona.jpg",
-				hometeam:"opp",
-				result:"L",
-				score:"35-24"
-			},
-			{
-				id:8,
-				opponent:"USC",
-				mascot:"Trojans",
-				date:"Oct 26, 2013",
-				time:"2:00 pm",
-				logo:"usc.jpg",
-				hometeam:"opp",
-				result:"L",
-				score:"19-3"
-			},
-			{
-				id:9,
-				opponent:"Arizona State",
-				mascot:"Wildcats",
-				date:"Nov 9, 2013",
-				time:"2:00 pm",
-				logo:"arizonastate.jpg",
-				hometeam:"utah",
-				result:"L",
-				score:"20-19"
-			},
-			{
-				id:10,
 				opponent:"Michigan",
 				mascot:"Wolverines",
-				date:"Sep 3, 2015",
-				time:"6:30 pm",
+				datetime:new Date("Sep 3 2015 6:30 pm"),
 				logo:"michigan.png",
 				hometeam:"utah",
 				result:"",
 				score:""
 			},
 			{
-				id:11,
+				id:2,
 				opponent:"Utah State",
 				mascot:"Aggies",
-				date:"Sep 11, 2015",
-				time:"7:00 pm",
+				datetime:new Date("Sep 11 2015 7:00 pm"),
 				logo:"utahstate.jpg",
 				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:3,
+				opponent:"Fresno State",
+				mascot:"Bulldogs",
+				datetime:new Date("Sep 19 2015 8:00 pm"),
+				logo:"fresnostate.png",
+				hometeam:"opp",
+				result:"",
+				score:""
+			},
+			{
+				id:4,
+				opponent:"Oregon",
+				mascot:"Ducks",
+				datetime:new Date("Sep 26 2015"),
+				logo:"oregon.jpg",
+				hometeam:"opp",
+				result:"",
+				score:""
+			},
+			{
+				id:5,
+				opponent:"Bye",
+				mascot:"",
+				datetime:new Date("Oct 3 2015"),
+				logo:"",
+				hometeam:"",
+				result:"",
+				score:""
+			},
+			{
+				id:6,
+				opponent:"Cal",
+				mascot:"Golden Bears",
+				datetime:new Date("Oct 10 2015"),
+				logo:"cal.jpg",
+				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:7,
+				opponent:"Arizona State",
+				mascot:"Sun Devils",
+				datetime:new Date("Oct 17 2015"),
+				logo:"arizonastate.jpg",
+				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:8,
+				opponent:"USC",
+				mascot:"Trojans",
+				datetime:new Date("Oct 24 2015"),
+				logo:"usc.jpg",
+				hometeam:"opp",
+				result:"",
+				score:""
+			},
+			{
+				id:9,
+				opponent:"Oregon State",
+				mascot:"Wildcats",
+				datetime:new Date("Oct 31 2015"),
+				logo:"oregonstate.jpg",
+				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:10,
+				opponent:"Washington",
+				mascot:"Huskies",
+				datetime:new Date("Nov 7 2015"),
+				logo:"washington.jpg",
+				hometeam:"opp",
+				result:"",
+				score:""
+			},
+			{
+				id:11,
+				opponent:"Arizona",
+				mascot:"Wildcats",
+				datetime:new Date("Nov 14 2015"),
+				logo:"arizona.jpg",
+				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:12,
+				opponent:"UCLA",
+				mascot:"Bruins",
+				datetime:new Date("Nov 21 2015"),
+				logo:"ucla.jpg",
+				hometeam:"utah",
+				result:"",
+				score:""
+			},
+			{
+				id:13,
+				opponent:"Colorado",
+				mascot:"Buffalos",
+				datetime:new Date("Nov 28 2015"),
+				logo:"colorado.jpg",
+				hometeam:"opp",
 				result:"",
 				score:""
 			}
